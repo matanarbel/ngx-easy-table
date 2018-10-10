@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { data } from '../../../assets/many-columns';
+import { Component, NgZone, OnInit } from '@angular/core';
+import * as faker from 'faker';
 import { ConfigService } from './configuration.service';
 
 @Component({
@@ -8,8 +8,9 @@ import { ConfigService } from './configuration.service';
   styleUrls: ['./horizontal-scroll.component.css'],
   providers: [ConfigService],
 })
-export class HorizontalScrollComponent {
+export class HorizontalScrollComponent implements OnInit {
   data;
+  configuration;
   columns = [
     { key: 'phone', title: 'Phone' },
     { key: 'age', title: 'Age' },
@@ -26,20 +27,37 @@ export class HorizontalScrollComponent {
     { key: 'company9', title: 'Company9' },
     { key: 'company10', title: 'Company10' },
     { key: 'company11', title: 'Company11' },
-    { key: 'company12', title: 'Company12' },
-    { key: 'company13', title: 'Company13' },
-    { key: 'company14', title: 'Company14' },
-    { key: 'company15', title: 'Company15' },
-    { key: 'company16', title: 'Company16' },
-    { key: 'company18', title: 'Company17' },
-    { key: 'company18', title: 'Company18' },
-    { key: 'company19', title: 'Company19' },
   ];
 
-  configuration;
-
-  constructor() {
+  constructor(private zone: NgZone) {
     this.configuration = ConfigService.config;
-    this.data = data;
+  }
+
+  private static generateData() {
+    return Array(20).fill('').map(() => {
+      return {
+        phone: faker.phone.phoneNumberFormat(),
+        age: faker.random.number({ min: 15, max: 70 }).toString(),
+        company: faker.company.companyName(),
+        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        isActive: faker.random.boolean(),
+        company2: faker.company.companyName(),
+        company3: faker.company.companyName(),
+        company4: faker.company.companyName(),
+        company5: faker.company.companyName(),
+        company6: faker.company.companyName(),
+        company7: faker.company.companyName(),
+        company8: faker.company.companyName(),
+        company9: faker.company.companyName(),
+        company10: faker.company.companyName(),
+        company11: faker.company.companyName(),
+      };
+    });
+  }
+
+  ngOnInit(): void {
+    this.zone.runOutsideAngular(() => {
+      this.data = HorizontalScrollComponent.generateData();
+    });
   }
 }

@@ -2,13 +2,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { TableModule } from './ngx-easy-table/table.module';
-
 import { routing } from './routes';
 
 import {
+  AsyncComponent,
   BasicComponent,
   CheckboxDefaultComponent,
   CheckboxesComponent,
@@ -34,6 +33,7 @@ import {
   ManyTablesComponent,
   ModalComponent,
   PaginationComponent,
+  PaginationRangeComponent,
   PersistStateComponent,
   ResizableComponent,
   RowTemplateComponent,
@@ -54,7 +54,6 @@ import {
   imports: [
     HttpClientModule,
     BrowserModule,
-    BrowserAnimationsModule,
     FormsModule,
     TableModule,
     routing,
@@ -101,6 +100,8 @@ import {
     FilterTemplateComponent,
     CustomIntableSortComponent,
     PersistStateComponent,
+    PaginationRangeComponent,
+    AsyncComponent,
   ],
   bootstrap: [AppComponent],
   providers: [],

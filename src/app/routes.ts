@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import {
+  AsyncComponent,
   BasicComponent,
   CheckboxDefaultComponent,
   CheckboxesComponent,
@@ -26,6 +27,7 @@ import {
   ManyTablesComponent,
   ModalComponent,
   PaginationComponent,
+  PaginationRangeComponent,
   PersistStateComponent,
   ResizableComponent,
   RowTemplateComponent,
@@ -44,13 +46,14 @@ import {
 
 export const routes = [
   { path: '', component: BasicComponent },
+  { path: 'basic', component: BasicComponent },
   { path: 'search', component: SearchComponent },
   { path: 'pagination', component: PaginationComponent },
   { path: 'server-pagination', component: ServerPaginationComponent },
   { path: 'server-sort', component: ServerSortComponent },
   { path: 'global-search', component: GlobalSearchComponent },
   { path: 'sort', component: SortComponent },
-  { path: 'export-csv', component: ExportComponent },
+  { path: 'export', component: ExportComponent },
   { path: 'click-event', component: ClickEventComponent },
   { path: 'template', component: TemplateComponent },
   { path: 'modal', component: ModalComponent },
@@ -65,13 +68,13 @@ export const routes = [
   { path: 'custom-sort', component: CustomSortComponent },
   { path: 'collapsed-rows', component: CollapsedRowsComponent },
   { path: 'checkboxes', component: CheckboxesComponent },
-  { path: 'checkboxes2', component: CheckboxDefaultComponent },
+  { path: 'checkbox-default', component: CheckboxDefaultComponent },
   { path: 'horizontal-scroll', component: HorizontalScrollComponent },
   { path: 'custom-filters', component: CustomFiltersComponent },
   { path: 'toggle-column', component: ToggleColumnComponent },
-  { path: 'dynamic-conf', component: DynamicConfigurationComponent },
+  { path: 'dynamic-configuration', component: DynamicConfigurationComponent },
   { path: 'exports', component: ExportsComponent },
-  { path: 'column-resizer', component: ResizableComponent },
+  { path: 'resizable', component: ResizableComponent },
   { path: 'column-width', component: ColumnWidthComponent },
   { path: 'fixed-width', component: FixedWidthComponent },
   { path: 'customize-theme', component: CustomizeThemeComponent },
@@ -81,6 +84,9 @@ export const routes = [
   { path: 'filter-template', component: FilterTemplateComponent },
   { path: 'custom-intable-sort', component: CustomIntableSortComponent },
   { path: 'persist-state', component: PersistStateComponent },
+  { path: 'pagination-range', component: PaginationRangeComponent },
+  { path: 'async', component: AsyncComponent },
+  { path: '**', component: BasicComponent },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });
